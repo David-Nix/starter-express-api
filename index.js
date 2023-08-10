@@ -3,6 +3,7 @@ import cors from "cors"
 import { MongoClient } from "mongodb"
 import UAParser from "ua-parser-js"
 import geoip from "geoip-lite"
+import ip from "ip"
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -147,7 +148,8 @@ app.post("/spring", (req, res) => {
 
 const getVisitDetails = (req) => {
     // GET IP ADDRESS
-    const ipAddress = req.socket.remoteAddress || req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    // const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress ||  req.socket.remoteAddress
+    const ipAddress = ip.address()
 
     // GET USER AGENT
     const visitorUserAgent = req.get("user-agent")
