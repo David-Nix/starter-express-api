@@ -3,7 +3,7 @@ import cors from "cors"
 import { MongoClient } from "mongodb"
 import UAParser from "ua-parser-js"
 import geoip from "geoip-lite"
-import requestIp from "request-ip"
+//import requestIp from "request-ip"
 
 const app = express()
 const port = process.env.PORT || 3000
