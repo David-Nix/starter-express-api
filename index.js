@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 app.use(cors())
 
+app.set("trust proxy", true);
+
 const uri = "mongodb+srv://incenix:BcUfsrApIRBUhDfS@llinx.rb9qgzc.mongodb.net/?retryWrites=true&w=majority"
 
 const createUser = async (client, newUser) => {
@@ -147,7 +149,9 @@ app.post("/spring", (req, res) => {
 
 const getVisitDetails = (req) => {
     // GET IP ADDRESS
-    const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress ||  req.socket.remoteAddress
+    // const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    console.log("express re-ip", req.ip);
+    const ipAddress = "191.101.80.9"
 
     // GET USER AGENT
     const visitorUserAgent = req.get("user-agent")
